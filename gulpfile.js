@@ -1,5 +1,10 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+
+// sass.compiler = require('node-sass');
 
 /*
     --TOP LEVEL FUNCTIONS --
@@ -9,14 +14,10 @@ const imagemin = require('gulp-imagemin');
     gulp.watch - Watch files and folders for changes
  */
 
-// Logs Message
-// *gulp message*
-gulp.task('message', async function () {
-    return console.log('Gulp is running...');
-});
+// *gulp <task-name>*
 
-// *gulp*
-gulp.task('default', async  function () {
+// Logs Message
+gulp.task('message', async function () {
     return console.log('Gulp is running...');
 });
 
@@ -27,14 +28,46 @@ gulp.task('copyHtml', async function () {
 });
 
 //Optimize images
+gulp.task('imageMin', () =>
+    gulp.src('src/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
+);
+
 /*exports.imageMin = () => (
     gulp.src('src/images/!*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/images'))
 );*/
 
-gulp.task('imageMin', () =>
-    gulp.src('src/images/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/images'))
-);
+//Minify JS
+gulp.task('minifyJs', async function () {
+    gulp.src('src/js/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+});
+
+//Compile Sass
+gulp.task('sass', async function () {
+    gulp.src('src/sass/*.scss')
+        .pipe(sass()).on('error', sass.logError)
+        .pipe(gulp.dest('dist/css'));
+});
+
+//Scripts
+gulp.task('scripts', async function() {
+   gulp.src('src/js/*.js')
+       .pipe(concat('main.js'))
+       .pipe(uglify())
+       .pipe(gulp.dest('dist/js'));
+});
+
+// *gulp*
+gulp.task('default', gulp.series('message', 'copyHtml', 'imageMin', 'sass', 'scripts'));
+
+gulp.task('watch', async function () {
+    gulp.watch('src/js/*.js', gulp.series('scripts'));
+    gulp.watch('src/images/*', gulp.series('imageMin'));
+    gulp.watch('src/sass/*.scss', gulp.series('sass'));
+    gulp.watch('src/*.html', gulp.series('copyHtml'));
+});
