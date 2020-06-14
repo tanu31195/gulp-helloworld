@@ -1,30 +1,30 @@
-#[Gulp JS Crash course](https://www.youtube.com/watch?v=1rw9MfIleEg)
+# [Gulp JS Crash course](https://www.youtube.com/watch?v=1rw9MfIleEg)
 
-###Install gulp globally
+### Install gulp globally
 `npm install -g gulp`
 
 
-###Install locally as a dev dependency as gulp is not used in production
+### Install locally as a dev dependency as gulp is not used in production
 npm install --save-dev gulp
 
 
-###Install [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
+### Install [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
 `npm install --save-dev gulp-imagemin`
 
 
-###Install [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
+### Install [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
 `npm install --save-dev gulp-uglify`
 
 
-###Install [gulp-sass](https://www.npmjs.com/package/gulp-sass)
+### Install [gulp-sass](https://www.npmjs.com/package/gulp-sass)
 `npm install --save-dev node-sass gulp-sass`
 
 
-###Install [gulp-concat](https://www.npmjs.com/package/gulp-concat)
+### Install [gulp-concat](https://www.npmjs.com/package/gulp-concat)
 `npm install --save-dev gulp-concat`
 
 
-##Errors
+## Errors
 
 [Task did not complete](https://stackoverflow.com/questions/36897877/gulp-error-the-following-tasks-did-not-complete-did-you-forget-to-signal-async)
 Use async function to overcome below error (Due to gulp v4)
