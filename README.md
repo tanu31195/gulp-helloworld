@@ -5,7 +5,7 @@
 
 
 ### Install locally as a dev dependency as gulp is not used in production
-npm install --save-dev gulp
+`npm install --save-dev gulp`
 
 
 ### Install [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
