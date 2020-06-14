@@ -1,6 +1,6 @@
 # [Gulp JS Crash course](https://www.youtube.com/watch?v=1rw9MfIleEg)
 
-### Install gulp globally
+### Install [gulp](https://www.npmjs.com/package/gulp) globally
 `npm install -g gulp`
 
 
